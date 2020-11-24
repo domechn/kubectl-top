@@ -1,13 +1,10 @@
-apiVersion: apps/v1
+apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: monitoring-grafana
   namespace: kube-system
 spec:
   replicas: 1
-  selector:
-    matchLabels:
-      k8s-app: grafana
   template:
     metadata:
       labels:
@@ -69,15 +66,12 @@ spec:
   selector:
     k8s-app: grafana
 ---
-apiVersion: apps/v1
+apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: heapster
   namespace: kube-system
 spec:
-  selector:
-    matchLabels:
-      k8s-app: heapster
   replicas: 1
   template:
     metadata:
@@ -131,16 +125,13 @@ spec:
   selector:
     k8s-app: heapster
 ---
-apiVersion: apps/v1
+apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: monitoring-influxdb
   namespace: kube-system
 spec:
   replicas: 1
-  selector:
-    matchLabels:
-      k8s-app: influxdb
   template:
     metadata:
       labels:
